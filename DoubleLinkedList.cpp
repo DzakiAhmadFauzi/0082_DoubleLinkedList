@@ -105,4 +105,21 @@ public:
             return;
         }
 
+        // step 2: if node is at the beginning
+        if (current == START)
+        {
+            START = current->next; // step 2a: START = START.next
+            if (START != NULL)
+                START->prev = NULL; // step 2b: START.prev = null
+        }
+        else
+        {
+            // step 3: Link previous node to next node of current
+            current->prev->next = current->next;
+
+            // step 4: If current is not the last node
+            if (current->next != NULL)
+                current->next->prev = current->prev;
+        }
+
         
